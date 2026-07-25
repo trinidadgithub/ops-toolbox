@@ -64,6 +64,7 @@ fi
 nodes_json="$("${KUBECTL_BASE[@]}" -n "$LONGHORN_NAMESPACE" get nodes.longhorn.io -o json --request-timeout=20s)" \
   || die "failed to query nodes.longhorn.io in namespace: $LONGHORN_NAMESPACE"
 
+# shellcheck disable=SC2016
 jq_filter='
   def bytes_to_gib: (. / 1073741824);
   def pct($num; $den): if ($den // 0) == 0 then 0 else (($num / $den) * 100) end;
