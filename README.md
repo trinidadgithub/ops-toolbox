@@ -40,5 +40,8 @@ Each candidate must pass security, ownership, documentation, and testing review 
 ## Initial Utilities
 
 - `kubernetes/workloads/k8s-unhealthy-pods.sh`: report Kubernetes pods that are not healthy.
+- `kubernetes/longhorn/longhorn-scheduler-pressure-report.sh`: report Longhorn disk scheduling pressure and scheduled-capacity overcommitment.
+- `kubernetes/longhorn/longhorn-orphan-report.sh`: report Longhorn orphaned replica data and managed replica overlap.
+- `kubernetes/longhorn/longhorn-pvc-ownership-audit.sh`: inspect Kubernetes and Longhorn ownership signals before PVC cleanup review.
 - `linux/storage/linux-storage-report.sh`: collect a read-only Linux storage and filesystem report.
 - `linux/dns/dns-search-drift-detector.sh`: audit DNS search-domain drift locally or across hosts with SSH.
