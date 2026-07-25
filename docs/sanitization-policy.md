@@ -30,8 +30,10 @@ Classify each candidate before implementation.
 - Use safe synthetic examples only.
 - Do not preserve internal naming, structure, comments, topology, or example output.
 - Do not claim compatibility with environments that were not actually tested.
-- Keep remediation separate from audit whenever possible.
+- Keep remediation out of published utilities for now. Publish audit and reporting only.
 
 ## Publication Rule
 
 Sanitization is not proof of ownership. If publication rights are unclear, do not publish the code. Reimplement the technique cleanly or request human review.
+
+At this stage, only read-only inspection, reporting, audit, and diagnostic utilities are eligible for publication. Scripts that change system, cluster, network, storage, DNS, or infrastructure state are not eligible, even when sanitized.

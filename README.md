@@ -8,8 +8,8 @@ This repository is intended to publish reusable operational techniques, not empl
 
 - Publish the technique, not the employer.
 - Prefer small, focused tools over frameworks.
-- Keep diagnostic tools read-only by default.
-- Require explicit operator intent for state-changing actions.
+- Publish only read-only inspection, reporting, and diagnostic utilities for now.
+- Exclude scripts that change state, even with dry-run support, until the project has a stronger review and safety process.
 - Use synthetic examples and documentation-safe names only.
 - Treat existing operational scripts as source material, not automatically publishable code.
 
@@ -21,6 +21,7 @@ This repository is in the initial seed stage. The first utilities are clean-room
 
 - `docs/sanitization-policy.md` defines the publication safety policy.
 - `docs/publication-checklist.md` provides the review gate for each utility.
+- `docs/design-principles.md` defines the utility design and safety model.
 
 The local session seed analysis and original source PDFs are intentionally ignored by git.
 

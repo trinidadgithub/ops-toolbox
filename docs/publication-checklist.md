@@ -2,6 +2,14 @@
 
 Use this checklist before adding or promoting a utility.
 
+## Current Safety Gate
+
+- The utility is read-only.
+- The utility only inspects, reports, audits, or diagnoses state.
+- The utility does not modify local systems, remote systems, Kubernetes objects, storage systems, DNS configuration, network state, infrastructure state, or application state.
+- The utility does not delete, restart, patch, cordon, uncordon, drain, attach, detach, format, mount, unmount, resize, remediate, or clean up anything.
+- Utilities that change state are out of scope for publication at this stage, even if they support `--dry-run`.
+
 ## Security
 
 - No credentials, tokens, kubeconfigs, SSH keys, or certificates are present.
@@ -21,8 +29,8 @@ Use this checklist before adding or promoting a utility.
 - Required dependencies are checked.
 - Errors are understandable.
 - Exit codes are meaningful.
-- Diagnostic behavior is read-only by default.
-- State-changing behavior requires explicit intent and supports `--dry-run` where practical.
+- Behavior is read-only, not merely read-only by default.
+- Any state-changing behavior results in `DO NOT PUBLISH` for now.
 - Shell scripts quote variables and pass `shellcheck` where practical.
 - Python scripts use lightweight CLI handling and avoid unnecessary dependencies.
 
