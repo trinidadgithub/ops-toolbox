@@ -137,7 +137,7 @@ case "$OUTPUT" in
   table)
     {
       printf 'CONTEXT\tNAMESPACE\tPOD\tNODE\tPHASE\tREADY\tREASONS\n'
-      jq -rsr 'add[] | [.context, .namespace, .pod, .node, .phase, .ready, .reasons] | @tsv' "${tmp_files[@]}"
+      jq -sr 'add[] | [.context, .namespace, .pod, .node, .phase, .ready, .reasons] | @tsv' "${tmp_files[@]}"
     } | if command -v column >/dev/null 2>&1; then column -t -s $'\t'; else cat; fi
     ;;
 esac
