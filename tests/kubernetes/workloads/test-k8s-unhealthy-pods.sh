@@ -70,4 +70,15 @@ if grep -Fq 'api-healthy-7d9f8' <<< "$csv_output"; then
   exit 1
 fi
 
+table_output="$(run_script)"
+if ! grep -Fq 'worker-crashloop-55c8d' <<< "$table_output"; then
+  printf 'Table output did not include expected unhealthy pod.\n%s\n' "$table_output" >&2
+  exit 1
+fi
+
+if grep -Fq 'backup-complete-28499100' <<< "$table_output"; then
+  printf 'Table output included succeeded pod unexpectedly.\n%s\n' "$table_output" >&2
+  exit 1
+fi
+
 printf 'k8s-unhealthy-pods fixture tests passed.\n'
