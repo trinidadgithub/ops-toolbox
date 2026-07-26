@@ -82,12 +82,14 @@ fi
 
 # shellcheck disable=SC2016
 jq_filter='[.items[]
-  | . as $pod
   | [(.status.containerStatuses[]?.state.waiting.reason // empty), (.status.containerStatuses[]?.state.terminated.reason // empty)] as $reasons
   | select(
-      (.status.phase != "Running" and .status.phase != "Succeeded")
-      or ([.status.containerStatuses[]?.ready] | any(. == false))
-      or ($reasons | length > 0)
+      ($include_succeeded == "true" or .status.phase != "Succeeded")
+      and (
+        .status.phase != "Running"
+        or ([.status.containerStatuses[]?.ready] | any(. == false))
+        or ($reasons | length > 0)
+      )
     )
   | {
       context: $context,
@@ -121,19 +123,7 @@ for ctx in "${contexts[@]}"; do
   tmp_file="$(mktemp)"
   tmp_files+=("$tmp_file")
 
-  if [[ "$INCLUDE_SUCCEEDED" == true ]]; then
-    jq --arg context "$ctx" '[.items[] | select(.status.phase != "Running") | {
-      context: $context,
-      namespace: .metadata.namespace,
-      pod: .metadata.name,
-      node: (.spec.nodeName // ""),
-      phase: .status.phase,
-      ready: (([.status.containerStatuses[]?] | map(select(.ready == true)) | length | tostring) + "/" + ([.status.containerStatuses[]?] | length | tostring)),
-      reasons: ([.status.containerStatuses[]?.state.waiting.reason // empty, .status.containerStatuses[]?.state.terminated.reason // empty] | unique | join(","))
-    }]' <<< "$pod_json" > "$tmp_file"
-  else
-    jq --arg context "$ctx" "$jq_filter" <<< "$pod_json" > "$tmp_file"
-  fi
+  jq --arg context "$ctx" --arg include_succeeded "$INCLUDE_SUCCEEDED" "$jq_filter" <<< "$pod_json" > "$tmp_file"
 done
 
 case "$OUTPUT" in

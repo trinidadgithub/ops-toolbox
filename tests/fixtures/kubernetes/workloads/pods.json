@@ -1,0 +1,112 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "metadata": {
+        "namespace": "example-app",
+        "name": "api-healthy-7d9f8"
+      },
+      "spec": {
+        "nodeName": "worker-01"
+      },
+      "status": {
+        "phase": "Running",
+        "containerStatuses": [
+          {
+            "name": "api",
+            "ready": true,
+            "state": {
+              "running": {
+                "startedAt": "2026-07-25T10:00:00Z"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "namespace": "example-app",
+        "name": "api-pending-6b7c9"
+      },
+      "spec": {},
+      "status": {
+        "phase": "Pending",
+        "containerStatuses": []
+      }
+    },
+    {
+      "metadata": {
+        "namespace": "example-app",
+        "name": "worker-crashloop-55c8d"
+      },
+      "spec": {
+        "nodeName": "worker-02"
+      },
+      "status": {
+        "phase": "Running",
+        "containerStatuses": [
+          {
+            "name": "worker",
+            "ready": false,
+            "state": {
+              "waiting": {
+                "reason": "CrashLoopBackOff"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "namespace": "example-batch",
+        "name": "import-failed-28499100"
+      },
+      "spec": {
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Failed",
+        "containerStatuses": [
+          {
+            "name": "import",
+            "ready": false,
+            "state": {
+              "terminated": {
+                "reason": "Error"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "metadata": {
+        "namespace": "example-batch",
+        "name": "backup-complete-28499100"
+      },
+      "spec": {
+        "nodeName": "worker-03"
+      },
+      "status": {
+        "phase": "Succeeded",
+        "containerStatuses": [
+          {
+            "name": "backup",
+            "ready": false,
+            "state": {
+              "terminated": {
+                "reason": "Completed"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "kind": "PodList",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}
