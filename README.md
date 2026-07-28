@@ -50,4 +50,5 @@ Each candidate must pass security, ownership, documentation, and testing review 
 - `kubernetes/networking/kube-proxy-diagnostics.sh`: collect a read-only kube-proxy diagnostics bundle.
 - `linux/storage/linux-storage-report.sh`: collect a read-only Linux storage and filesystem report.
 - `linux/dns/dns-search-drift-detector.sh`: audit DNS search-domain drift locally or across hosts with SSH.
+- `vmware/vm-disk-provisioning-report.sh`: report VMware virtual disk thin/thick provisioning metadata.
 - `linux/system/node-triage-bundle.sh`: collect a read-only Linux node triage bundle for post-incident review.
