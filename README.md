@@ -34,6 +34,7 @@ The local session seed analysis and original source PDFs are intentionally ignor
 - Kubernetes storage resize and expansion auditing
 - Kubernetes networking diagnostics
 - Observability health, alerting, dashboard, and incident-response audits
+- Vault PKI, auth, policy, lease, and Transit diagnostics
 - Linux disk and LVM reporting
 - DNS search-domain drift detection
 - Calico node IP autodetection auditing
@@ -50,6 +51,7 @@ Each candidate must pass security, ownership, documentation, and testing review 
 - `kubernetes/storage/pvc-resize-audit.sh`: report PVC resize and expansion signals.
 - `kubernetes/networking/kube-proxy-diagnostics.sh`: collect a read-only kube-proxy diagnostics bundle.
 - `observability/`: read-only Prometheus, Alertmanager, and Grafana audit utilities.
+- `security/vault/`: read-only Vault operational audit utilities.
 - `linux/storage/linux-storage-report.sh`: collect a read-only Linux storage and filesystem report.
 - `linux/dns/dns-search-drift-detector.sh`: audit DNS search-domain drift locally or across hosts with SSH.
 - `vmware/vm-disk-provisioning-report.sh`: report VMware virtual disk thin/thick provisioning metadata.
