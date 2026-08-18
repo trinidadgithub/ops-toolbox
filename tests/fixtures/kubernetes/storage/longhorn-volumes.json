@@ -1,0 +1,23 @@
+{
+  "apiVersion": "longhorn.io/v1beta2",
+  "items": [
+    {
+      "metadata": {"name": "pvc-data-api-0"},
+      "status": {
+        "state": "attached",
+        "robustness": "degraded",
+        "size": "21474836480",
+        "kubernetesStatus": {"pvName": "pvc-data-api-0"}
+      }
+    },
+    {
+      "metadata": {"name": "pvc-cache-api-0"},
+      "status": {
+        "state": "attached",
+        "robustness": "healthy",
+        "size": "5368709120",
+        "kubernetesStatus": {"pvName": "pvc-cache-api-0"}
+      }
+    }
+  ]
+}

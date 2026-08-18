@@ -1,0 +1,21 @@
+{
+  "virtualMachines": [
+    {
+      "name": "db-01",
+      "config": {
+        "hardware": {
+          "device": [
+            {
+              "deviceInfo": {"label": "Hard disk 1"},
+              "backing": {
+                "fileName": "[datastore-c] db-01/db-01.vmdk",
+                "thinProvisioned": false,
+                "eagerlyScrub": true
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

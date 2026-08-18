@@ -100,6 +100,28 @@ Classifications include:
 | `UNOWNED_CANDIDATE` | No obvious Kubernetes owner was found; human review is still required. |
 | `REVIEW` | Signals are inconclusive. |
 
+## `longhorn-maintenance-gate-report.sh`
+
+Reports read-only Longhorn gates before storage-node maintenance.
+
+It summarizes:
+
+- attached volume robustness
+- running replica count and distinct replica-node count
+- Longhorn node readiness
+- non-running Longhorn pods
+- an overall `REVIEW_READY` or `REVIEW_BLOCKED` maintenance gate
+
+Usage:
+
+```bash
+./kubernetes/longhorn/longhorn-maintenance-gate-report.sh --context example-rke2
+./kubernetes/longhorn/longhorn-maintenance-gate-report.sh --output json
+./kubernetes/longhorn/longhorn-maintenance-gate-report.sh --output summary
+```
+
+This script does not approve node maintenance. It collects the evidence an operator should review before power-cycling, rebooting, draining, or otherwise disrupting a Longhorn storage node.
+
 ## Exit Codes
 
 - `0`: report completed successfully
