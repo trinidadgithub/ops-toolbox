@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "metadata": {"name": "worker-1"},
+      "spec": {},
+      "status": {
+        "conditions": [
+          {"type": "Ready", "status": "True", "lastTransitionTime": "2026-01-01T00:00:00Z"},
+          {"type": "MemoryPressure", "status": "False"},
+          {"type": "DiskPressure", "status": "False"},
+          {"type": "PIDPressure", "status": "False"},
+          {"type": "NetworkUnavailable", "status": "False"}
+        ],
+        "nodeInfo": {"kubeletVersion": "v1.31.0", "kernelVersion": "6.8.0-example", "bootID": "boot-worker-1"}
+      }
+    },
+    {
+      "metadata": {"name": "worker-2"},
+      "spec": {"unschedulable": true, "taints": [{"key": "maintenance", "effect": "NoSchedule"}]},
+      "status": {
+        "conditions": [
+          {"type": "Ready", "status": "True", "lastTransitionTime": "2026-01-01T00:10:00Z"},
+          {"type": "MemoryPressure", "status": "False"},
+          {"type": "DiskPressure", "status": "False"},
+          {"type": "PIDPressure", "status": "False"},
+          {"type": "NetworkUnavailable", "status": "False"}
+        ],
+        "nodeInfo": {"kubeletVersion": "v1.31.0", "kernelVersion": "6.8.0-example", "bootID": "boot-worker-2"}
+      }
+    },
+    {
+      "metadata": {"name": "worker-3"},
+      "spec": {},
+      "status": {
+        "conditions": [
+          {"type": "Ready", "status": "False", "lastTransitionTime": "2026-01-01T00:20:00Z"},
+          {"type": "MemoryPressure", "status": "False"},
+          {"type": "DiskPressure", "status": "False"},
+          {"type": "PIDPressure", "status": "False"},
+          {"type": "NetworkUnavailable", "status": "False"}
+        ],
+        "nodeInfo": {"kubeletVersion": "v1.31.0", "kernelVersion": "6.8.0-example", "bootID": "boot-worker-3"}
+      }
+    }
+  ]
+}
