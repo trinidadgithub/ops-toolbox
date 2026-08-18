@@ -13,6 +13,20 @@ These tools depend on externally configured VMware access. Do not commit credent
 
 Configure `govc` using environment variables or another secure local method before running these utilities. Typical variables include `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, and `GOVC_DATACENTER`.
 
+## `vm-cdrom-report.sh`
+
+Reports virtual CD/DVD devices for VMs discovered through one or more vSphere inventory scopes.
+
+Use it before VM maintenance to find stale virtual media and to separate read-only inventory review from any later change window.
+
+```bash
+./vmware/vm-cdrom-report.sh --scope "/Example-Datacenter/vm/example-folder"
+./vmware/vm-cdrom-report.sh --scope "/Example-Datacenter/vm/example-folder" --only-connected
+./vmware/vm-cdrom-report.sh --all-vms --datacenter Example-Datacenter --output csv
+```
+
+The utility is read-only. It runs `govc find` and `govc device.info`; it does not eject, disconnect, remove, add, or modify VM devices.
+
 ## `vm-disk-provisioning-report.sh`
 
 Reports virtual disk provisioning mode for VMs discovered through one or more vSphere inventory scopes.

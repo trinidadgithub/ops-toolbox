@@ -1,0 +1,28 @@
+{
+  "virtualMachines": [
+    {
+      "name": "web-01",
+      "config": {
+        "hardware": {
+          "device": [
+            {
+              "deviceInfo": {"label": "Hard disk 1"},
+              "backing": {
+                "fileName": "[datastore-a] web-01/web-01.vmdk",
+                "thinProvisioned": true
+              }
+            },
+            {
+              "deviceInfo": {"label": "Hard disk 2"},
+              "backing": {
+                "fileName": "[datastore-b] web-01/web-01_1.vmdk",
+                "thinProvisioned": false,
+                "eagerlyScrub": false
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

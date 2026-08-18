@@ -152,7 +152,7 @@ for ctx in "${contexts[@]}"; do
           pv: (.spec.volumeName // ""),
           pvCapacity: ($pv_obj.spec.capacity.storage // ""),
           reclaimPolicy: ($pv_obj.spec.persistentVolumeReclaimPolicy // ""),
-          allowExpansion: ($sc_obj.allowVolumeExpansion // null),
+          allowExpansion: (if $sc_obj | has("allowVolumeExpansion") then $sc_obj.allowVolumeExpansion else null end),
           signal: (if ($conditions | any(. == "FileSystemResizePending")) then "FILESYSTEM_RESIZE_PENDING"
                    elif ($conditions | any(. == "Resizing")) then "RESIZING"
                    else "REQUEST_CAPACITY_MISMATCH" end),
@@ -189,7 +189,6 @@ for ctx in "${contexts[@]}"; do
 
   if [[ "$INCLUDE_LONGHORN" == true ]]; then
     longhorn_check_file="$(mktemp)"
-    tmp_files+=("$longhorn_check_file")
     if "${KUBECTL_BASE[@]}" --context "$ctx" -n "$LONGHORN_NAMESPACE" get volumes.longhorn.io -o json --request-timeout=15s >"$longhorn_check_file" 2>/dev/null; then
       longhorn_json="$(< "$longhorn_check_file")"
       longhorn_file="$(mktemp)"
@@ -217,6 +216,7 @@ for ctx in "${contexts[@]}"; do
           }
       ]' <<< "$longhorn_json" > "$longhorn_file"
     fi
+    rm -f "$longhorn_check_file"
   fi
 done
 
@@ -226,12 +226,12 @@ case "$OUTPUT" in
     ;;
   csv)
     echo 'context,source,namespace,name,storageClass,requested,capacity,pv,pvCapacity,reclaimPolicy,allowExpansion,signal,details'
-    jq -rsr 'add[] | [.context,.source,.namespace,.name,.storageClass,.requested,.capacity,.pv,.pvCapacity,.reclaimPolicy,(.allowExpansion|tostring),.signal,.details] | @csv' "${tmp_files[@]}"
+    jq -s -r 'add[] | [.context,.source,.namespace,.name,.storageClass,.requested,.capacity,.pv,.pvCapacity,.reclaimPolicy,(.allowExpansion|tostring),.signal,.details] | @csv' "${tmp_files[@]}"
     ;;
   table)
     {
       printf 'CONTEXT\tSOURCE\tNAMESPACE\tNAME\tREQUESTED\tCAPACITY\tSTORAGECLASS\tALLOW_EXPANSION\tSIGNAL\tDETAILS\n'
-      jq -rsr 'add[] | [.context,.source,.namespace,.name,.requested,.capacity,.storageClass,(.allowExpansion|tostring),.signal,.details] | @tsv' "${tmp_files[@]}"
+      jq -s -r 'add[] | [.context,.source,.namespace,.name,.requested,.capacity,.storageClass,(.allowExpansion|tostring),.signal,.details] | @tsv' "${tmp_files[@]}"
     } | if command -v column >/dev/null 2>&1; then column -t -s $'\t'; else cat; fi
     ;;
 esac

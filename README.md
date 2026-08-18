@@ -48,6 +48,7 @@ Each candidate must pass security, ownership, documentation, and testing review 
 - `kubernetes/longhorn/longhorn-scheduler-pressure-report.sh`: report Longhorn disk scheduling pressure and scheduled-capacity overcommitment.
 - `kubernetes/longhorn/longhorn-orphan-report.sh`: report Longhorn orphaned replica data and managed replica overlap.
 - `kubernetes/longhorn/longhorn-pvc-ownership-audit.sh`: inspect Kubernetes and Longhorn ownership signals before PVC cleanup review.
+- `kubernetes/longhorn/longhorn-maintenance-gate-report.sh`: report Longhorn health gates before storage-node maintenance.
 - `kubernetes/storage/pvc-resize-audit.sh`: report PVC resize and expansion signals.
 - `kubernetes/networking/kube-proxy-diagnostics.sh`: collect a read-only kube-proxy diagnostics bundle.
 - `observability/`: read-only Prometheus, Alertmanager, and Grafana audit utilities.
@@ -55,4 +56,5 @@ Each candidate must pass security, ownership, documentation, and testing review 
 - `linux/storage/linux-storage-report.sh`: collect a read-only Linux storage and filesystem report.
 - `linux/dns/dns-search-drift-detector.sh`: audit DNS search-domain drift locally or across hosts with SSH.
 - `vmware/vm-disk-provisioning-report.sh`: report VMware virtual disk thin/thick provisioning metadata.
+- `vmware/vm-cdrom-report.sh`: report VMware virtual CD/DVD device inventory and connected/start-connected state.
 - `linux/system/node-triage-bundle.sh`: collect a read-only Linux node triage bundle for post-incident review.

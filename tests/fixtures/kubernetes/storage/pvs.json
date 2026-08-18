@@ -1,0 +1,26 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "metadata": {"name": "pvc-data-api-0"},
+      "spec": {
+        "capacity": {"storage": "10Gi"},
+        "persistentVolumeReclaimPolicy": "Retain"
+      }
+    },
+    {
+      "metadata": {"name": "pvc-cache-api-0"},
+      "spec": {
+        "capacity": {"storage": "5Gi"},
+        "persistentVolumeReclaimPolicy": "Delete"
+      }
+    },
+    {
+      "metadata": {"name": "pvc-logs-api-0"},
+      "spec": {
+        "capacity": {"storage": "6Gi"},
+        "persistentVolumeReclaimPolicy": "Delete"
+      }
+    }
+  ]
+}
