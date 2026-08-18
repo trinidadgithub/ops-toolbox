@@ -1,0 +1,6 @@
+{
+  "items": [
+    {"metadata": {"namespace": "example-app", "name": "api-pdb"}, "status": {"disruptionsAllowed": 0}},
+    {"metadata": {"namespace": "example-app", "name": "worker-pdb"}, "status": {"disruptionsAllowed": 1}}
+  ]
+}

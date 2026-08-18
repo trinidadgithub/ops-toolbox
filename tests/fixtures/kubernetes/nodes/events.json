@@ -1,0 +1,6 @@
+{
+  "items": [
+    {"type": "Warning", "involvedObject": {"kind": "Node", "name": "worker-2"}, "reason": "NodeNotReady"},
+    {"type": "Normal", "involvedObject": {"kind": "Node", "name": "worker-1"}, "reason": "NodeReady"}
+  ]
+}

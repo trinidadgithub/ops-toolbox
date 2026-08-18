@@ -1,0 +1,6 @@
+{
+  "items": [
+    {"metadata": {"name": "longhorn-manager-a"}, "spec": {"nodeName": "storage-1"}, "status": {"phase": "Running"}},
+    {"metadata": {"name": "instance-manager-b"}, "spec": {"nodeName": "storage-2"}, "status": {"phase": "Pending", "reason": "Unschedulable"}}
+  ]
+}

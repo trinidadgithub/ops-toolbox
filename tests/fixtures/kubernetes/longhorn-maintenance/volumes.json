@@ -1,0 +1,6 @@
+{
+  "items": [
+    {"metadata": {"name": "pvc-healthy"}, "status": {"state": "attached", "robustness": "healthy", "currentNodeID": "worker-1"}},
+    {"metadata": {"name": "pvc-degraded"}, "status": {"state": "attached", "robustness": "degraded", "currentNodeID": "worker-2"}}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "metadata": {"namespace": "example-app", "name": "api-ok"},
+      "spec": {"nodeName": "worker-1"},
+      "status": {"phase": "Running", "containerStatuses": [{"ready": true}]}
+    },
+    {
+      "metadata": {"namespace": "example-app", "name": "api-crash"},
+      "spec": {"nodeName": "worker-2"},
+      "status": {"phase": "Running", "containerStatuses": [{"ready": false, "state": {"waiting": {"reason": "CrashLoopBackOff"}}}]}
+    },
+    {
+      "metadata": {"namespace": "example-batch", "name": "complete-job"},
+      "spec": {"nodeName": "worker-2"},
+      "status": {"phase": "Succeeded", "containerStatuses": [{"ready": false}]}
+    }
+  ]
+}

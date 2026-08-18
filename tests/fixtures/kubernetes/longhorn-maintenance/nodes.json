@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "metadata": {"name": "storage-1"},
+      "spec": {"allowScheduling": true},
+      "status": {
+        "conditions": [{"type": "Ready", "status": "True"}],
+        "diskStatus": {"disk-a": {"conditions": [{"type": "Schedulable", "status": "True"}]}}
+      }
+    }
+  ]
+}

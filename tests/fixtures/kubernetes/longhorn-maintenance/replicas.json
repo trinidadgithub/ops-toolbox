@@ -1,0 +1,8 @@
+{
+  "items": [
+    {"metadata": {"name": "pvc-healthy-r-1"}, "spec": {"volumeName": "pvc-healthy", "nodeID": "storage-1"}, "status": {"currentState": "running"}},
+    {"metadata": {"name": "pvc-healthy-r-2"}, "spec": {"volumeName": "pvc-healthy", "nodeID": "storage-2"}, "status": {"currentState": "running"}},
+    {"metadata": {"name": "pvc-degraded-r-1"}, "spec": {"volumeName": "pvc-degraded", "nodeID": "storage-1"}, "status": {"currentState": "running"}},
+    {"metadata": {"name": "pvc-degraded-r-2"}, "spec": {"volumeName": "pvc-degraded", "nodeID": "storage-2"}, "status": {"currentState": "stopped"}}
+  ]
+}
