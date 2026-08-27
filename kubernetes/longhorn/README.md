@@ -169,6 +169,18 @@ tests/kubernetes/longhorn/run-longhorn-storageclass-health-fixture.sh \
 
 Captured fixture files can contain real cluster names, namespaces, workload names, node names, labels, annotations, event messages, topology, IPs, domains, and storage details. Do not commit captured fixtures as-is. Minimize and sanitize them before turning a cluster issue into a permanent test case.
 
+Sanitize a captured fixture before preparing a commit-ready test case:
+
+```bash
+tests/kubernetes/longhorn/sanitize-longhorn-storageclass-health-fixture.sh \
+  --input-dir reports/fixtures/longhorn-storageclass-health-YYYYMMDDTHHMMSSZ \
+  --output-dir reports/fixtures/longhorn-storageclass-health-sanitized
+```
+
+The sanitizer replaces namespaces, PVCs, PVs, Longhorn volumes, replicas, nodes, and event messages with neutral example values while preserving the relationships used by the report. It also replaces common metadata such as labels, annotations, UIDs, resource versions, owner references, and managed fields with neutral mocked values so future tests can exercise metadata-dependent logic.
+
+Sanitization is a review aid, not a publication guarantee. Review the output before copying any sanitized fixture into `tests/fixtures/`.
+
 ## Exit Codes
 
 - `0`: report completed successfully
