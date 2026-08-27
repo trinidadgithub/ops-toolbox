@@ -122,6 +122,53 @@ Usage:
 
 This script does not approve node maintenance. It collects the evidence an operator should review before power-cycling, rebooting, draining, or otherwise disrupting a Longhorn storage node.
 
+## `longhorn-storageclass-health-report.sh`
+
+Reports health signals for PVCs that use Longhorn storage classes.
+
+It correlates:
+
+- PVCs using storage classes with the Longhorn CSI provisioner
+- bound PVs
+- Longhorn volume state and robustness
+- expected, running, and non-running replicas
+- replica node placement
+- related Kubernetes warning events
+
+Usage:
+
+```bash
+./kubernetes/longhorn/longhorn-storageclass-health-report.sh --context example-rke2
+./kubernetes/longhorn/longhorn-storageclass-health-report.sh --namespace example-app --output json
+./kubernetes/longhorn/longhorn-storageclass-health-report.sh --output summary
+```
+
+This script is intended for readiness and storage-health review when workloads use the Longhorn storage class. It does not repair, detach, attach, delete, expand, or modify any Kubernetes or Longhorn object.
+
+### Local Fixture Capture And Replay
+
+Operators can capture a local fixture from a cluster issue and replay the report against a fake `kubectl` without repeatedly querying the cluster.
+
+Capture read-only JSON from a live cluster:
+
+```bash
+tests/kubernetes/longhorn/capture-longhorn-storageclass-health-fixture.sh \
+  --context example-rke2 \
+  --namespace example-app
+```
+
+The default output path is under `reports/fixtures/`, which is ignored by git.
+
+Replay the captured fixture through a temporary fake `kubectl`:
+
+```bash
+tests/kubernetes/longhorn/run-longhorn-storageclass-health-fixture.sh \
+  --fixture-dir reports/fixtures/longhorn-storageclass-health-YYYYMMDDTHHMMSSZ \
+  --output json
+```
+
+Captured fixture files can contain real cluster names, namespaces, workload names, node names, labels, annotations, event messages, topology, IPs, domains, and storage details. Do not commit captured fixtures as-is. Minimize and sanitize them before turning a cluster issue into a permanent test case.
+
 ## Exit Codes
 
 - `0`: report completed successfully

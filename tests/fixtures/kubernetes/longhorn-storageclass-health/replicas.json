@@ -1,0 +1,9 @@
+{
+  "apiVersion": "longhorn.io/v1beta2",
+  "items": [
+    {"metadata": {"name": "pvc-data-api-0-r-1"}, "spec": {"volumeName": "pvc-data-api-0", "nodeID": "storage-1"}, "status": {"currentState": "running"}},
+    {"metadata": {"name": "pvc-data-api-0-r-2"}, "spec": {"volumeName": "pvc-data-api-0", "nodeID": "storage-2"}, "status": {"currentState": "stopped"}},
+    {"metadata": {"name": "pvc-cache-api-0-r-1"}, "spec": {"volumeName": "pvc-cache-api-0", "nodeID": "storage-1"}, "status": {"currentState": "running"}},
+    {"metadata": {"name": "pvc-cache-api-0-r-2"}, "spec": {"volumeName": "pvc-cache-api-0", "nodeID": "storage-2"}, "status": {"currentState": "running"}}
+  ]
+}
