@@ -1,0 +1,21 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "type": "Warning",
+      "metadata": {"namespace": "example-app", "name": "volume-warning"},
+      "lastTimestamp": "2026-01-01T00:00:00Z",
+      "reason": "FailedAttachVolume",
+      "message": "Attach failed for volume pvc-data-api-0",
+      "involvedObject": {"kind": "PersistentVolumeClaim", "name": "data-api-0"}
+    },
+    {
+      "type": "Normal",
+      "metadata": {"namespace": "example-app", "name": "scheduled"},
+      "lastTimestamp": "2026-01-01T00:01:00Z",
+      "reason": "Scheduled",
+      "message": "Successfully assigned pod",
+      "involvedObject": {"kind": "Pod", "name": "api-0"}
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "metadata": {"namespace": "example-app", "name": "data-api-0"},
+      "spec": {"storageClassName": "longhorn", "volumeName": "pvc-data-api-0"},
+      "status": {"phase": "Bound"}
+    },
+    {
+      "metadata": {"namespace": "example-app", "name": "cache-api-0"},
+      "spec": {"storageClassName": "longhorn", "volumeName": "pvc-cache-api-0"},
+      "status": {"phase": "Bound"}
+    },
+    {
+      "metadata": {"namespace": "example-app", "name": "archive-api-0"},
+      "spec": {"storageClassName": "standard", "volumeName": "pvc-archive-api-0"},
+      "status": {"phase": "Bound"}
+    }
+  ]
+}
