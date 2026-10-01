@@ -11,6 +11,9 @@ tests=(
   "$ROOT_DIR/tests/kubernetes/longhorn/test-longhorn-storageclass-health-report.sh"
   "$ROOT_DIR/tests/kubernetes/longhorn/test-longhorn-storageclass-health-sanitizer.sh"
   "$ROOT_DIR/tests/kubernetes/networking/test-kube-proxy-diagnostics.sh"
+  "$ROOT_DIR/tests/security/test-vault-openbao-research-framework.sh"
+  "$ROOT_DIR/tests/security/test-vault-openbao-chain-exposure-report.sh"
+  "$ROOT_DIR/tests/security/test-vault-openbao-chain-audit-report.sh"
   "$ROOT_DIR/tests/vmware/test-vm-cdrom-report.sh"
   "$ROOT_DIR/tests/vmware/test-vm-disk-provisioning-report.sh"
 )
